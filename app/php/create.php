@@ -1,3 +1,6 @@
+<?php
+declare(strict_types=1);
+
 require_once __DIR__ . '/../init.php';
 
 try {
@@ -10,11 +13,15 @@ try {
     $idNovoUsuario = create($pdo, 'alunos', $novoUsuario);
 
     echo 'Novo usuário inserido com o ID: '
-        . htmlspecialchars((string) $idNovoUsuario, ENT_QUOTES, 'UTF-8');
+        . htmlspecialchars(
+            (string) $idNovoUsuario,
+            ENT_QUOTES,
+            'UTF-8'
+        );
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
-
     http_response_code(500);
+
     echo 'Erro ao cadastrar usuário. Confira a tabela e a conexão com o banco.';
 }
