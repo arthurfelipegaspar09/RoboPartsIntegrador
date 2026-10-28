@@ -5,8 +5,8 @@ require_once __DIR__ . '/../init.php';
 
 try {
     $novoUsuario = [
-        'nome' => 'tutu',
-        'email' => 'arthur@gmail.com',
+        'nome' => 'fefe',
+        'email' => 'felipe@gmail.com',
         'data_nascimento' => '2009-08-27'
     ];
 
