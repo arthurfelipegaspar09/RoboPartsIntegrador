@@ -30,5 +30,7 @@ try {
         Banco de dados: <strong><?= htmlspecialchars($databaseStatus, ENT_QUOTES, 'UTF-8') ?></strong>
     </div>
     <p>Comece a aplicação editando <code>app/index.php</code>.</p>
+
+    <a href="php/create.php">Cadastrar aluno</a>
 </body>
 </html>
