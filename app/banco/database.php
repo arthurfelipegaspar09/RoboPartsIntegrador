@@ -14,8 +14,8 @@ function database(): PDO
     // Configurações obtidas das variáveis de ambiente do Coolify
     $host = getenv('DB_HOST') ?: 'db';
     $port = getenv('DB_PORT') ?: '3306';
-    $database = getenv('DB_DATABASE') ?: 'integrador';
-    $username = getenv('DB_USERNAME') ?: 'integrador';
+    $database = getenv('DB_DATABASE') ?: 'cadastro';
+    $username = getenv('DB_USERNAME') ?: 'root';
     $password = getenv('DB_PASSWORD') ?: '';
 
     // Cria a conexão com o MySQL
