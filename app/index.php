@@ -31,6 +31,6 @@ try {
     </div>
     <p>Comece a aplicação editando <code>app/index.php</code>.</p>
 
-    <a href="php/create.php">Cadastrar aluno</a>
+    <a href="php/cadastro.php">Cadastrar aluno</a>
 </body>
 </html>
