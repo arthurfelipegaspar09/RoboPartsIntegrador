@@ -1,0 +1,146 @@
+/* Botão flutuante */
+.minichat-botao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+}
+
+/* Janela do chat (começa escondida) */
+.minichat {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    height: 420px;
+    max-height: calc(100vh - 110px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+}
+
+.minichat.aberto {
+    display: flex;
+}
+
+.minichat-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.minichat-fechar {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Área das mensagens */
+.minichat .chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #f3f4f6;
+}
+
+.minichat .bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.minichat .bubble.user {
+    align-self: flex-end;
+    background: #2563eb;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.minichat .bubble.assistant {
+    align-self: flex-start;
+    background: #fff;
+    color: #111;
+    border-bottom-left-radius: 4px;
+}
+
+/* Indicador "digitando..." (três bolinhas) */
+.minichat .bubble span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 2px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: minichat-pular 1s infinite;
+}
+
+.minichat .bubble span:nth-child(2) { animation-delay: 0.15s; }
+.minichat .bubble span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes minichat-pular {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+}
+
+/* Campo de digitar */
+.minichat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.minichat-form .message {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.minichat-form .submit_message {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Celular: o chat ocupa quase a tela toda */
+@media (max-width: 480px) {
+    .minichat {
+        right: 10px;
+        left: 10px;
+        width: auto;
+        bottom: 85px;
+    }
+}
