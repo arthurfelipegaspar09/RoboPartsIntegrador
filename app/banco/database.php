@@ -12,11 +12,11 @@ function database(): PDO
     }
 
     // Configurações do banco de dados
-    $host = getenv('DB_HOST') ?: 'localhost';
-    $port = getenv('DB_PORT') ?: '3309';
+    $host = getenv('DB_HOST') ?: 'db';
+    $port = getenv('DB_PORT') ?: '3306';
     $database = getenv('DB_DATABASE') ?: 'cadastro';
     $username = getenv('DB_USERNAME') ?: 'root';
-    $password = getenv('DB_PASSWORD') ?: '1234';
+    $password = getenv('DB_PASSWORD') ?: 'senai123';
 
     // Monta a conexão
     $dsn = "mysql:host={$host};port={$port};dbname={$database};charset=utf8mb4";
