@@ -34,7 +34,7 @@ try {
         $_SESSION['usuario_id']   = (int) $usuario['id'];
         $_SESSION['usuario_nome'] = $usuario['nome'];
 
-        header('Location: ./home.php');
+        header('Location: /php/home.php');
         exit;
     }
 
