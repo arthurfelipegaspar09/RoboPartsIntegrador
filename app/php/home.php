@@ -2,7 +2,9 @@
 define('NA_RAIZ', true);
 
 // Carregar inicialização
-require_once __DIR__ . '/php/includes/bootstrap.php';
+declare(strict_types=1);
+
+require_once __DIR__ . '/includes/bootstrap.php';
 
 // Sair da conta
 if (isset($_GET['logout'])) {
