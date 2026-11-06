@@ -1,9 +1,11 @@
-<?php
-define('NA_RAIZ', true);
 
-// Carregar inicialização
+<?php
+
 declare(strict_types=1);
 
+define('NA_RAIZ', false);
+
+// Carregar inicialização da loja
 require_once __DIR__ . '/includes/bootstrap.php';
 
 // Sair da conta
@@ -19,7 +21,7 @@ if (isset($_GET['logout'])) {
 
     session_regenerate_id(true);
 
-    header('Location: php/login.php');
+    header('Location: /php/login.php');
     exit;
 }
 
@@ -28,7 +30,8 @@ exigir_acesso();
 
 // Dados da página
 $categorias = categorias();
-$temHero = is_file(__DIR__ . '/img/hero.png');
+
+$temHero = is_file(__DIR__ . '/../img/hero.png');
 
 $nCats = count($categorias);
 
@@ -39,7 +42,8 @@ $h3dCats = $nCats
 $titulo = 'Início';
 
 // Cabeçalho
-require __DIR__ . '/php/includes/header.php';
+require __DIR__ . '/includes/header.php';
+
 ?>
 
 <main>
@@ -90,12 +94,13 @@ require __DIR__ . '/php/includes/header.php';
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             aria-hidden="true">
-
                             <path d="M5 12h14M13 6l6 6-6 6"/>
                         </svg>
                     </a>
 
-                    <a class="h3d-btn h3d-btn-2" href="<?= e(pg('produtos.php')) ?>">
+                    <a
+                        class="h3d-btn h3d-btn-2"
+                        href="<?= e(pg('produtos.php')) ?>">
                         Todos os produtos
                     </a>
 
@@ -122,8 +127,7 @@ require __DIR__ . '/php/includes/header.php';
 
     </section>
 
-    <script type="module" src="js/hero3d.js"></script>
-
+    <script type="module" src="/js/hero3d.js"></script>
 
     <!-- CATEGORIAS -->
     <section class="secao" id="categorias">
@@ -163,7 +167,12 @@ require __DIR__ . '/php/includes/header.php';
                         <small>
                             <?php
                             $n = contar_produtos($c['id']);
-                            echo $n . ($n === 1 ? ' produto' : ' produtos');
+
+                            echo $n . (
+                                $n === 1
+                                    ? ' produto'
+                                    : ' produtos'
+                            );
                             ?>
                         </small>
 
@@ -187,7 +196,6 @@ require __DIR__ . '/php/includes/header.php';
 
     </section>
 
-
     <!-- CATÁLOGO -->
     <section class="secao secao-cinza" id="catalogo">
 
@@ -197,7 +205,9 @@ require __DIR__ . '/php/includes/header.php';
 
                 <h2>Catálogo</h2>
 
-                <a class="ver-todos" href="<?= e(pg('produtos.php')) ?>">
+                <a
+                    class="ver-todos"
+                    href="<?= e(pg('produtos.php')) ?>">
                     Ver todos os produtos
                 </a>
 
@@ -214,7 +224,8 @@ require __DIR__ . '/php/includes/header.php';
                         <div>
 
                             <h3>
-                                <a href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+                                <a
+                                    href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
                                     <?= e($c['nome']) ?>
                                 </a>
                             </h3>
@@ -291,7 +302,6 @@ require __DIR__ . '/php/includes/header.php';
 
     </section>
 
-
     <!-- ATENDIMENTO -->
     <section class="chamada">
 
@@ -324,11 +334,12 @@ require __DIR__ . '/php/includes/header.php';
 
 </main>
 
-
 <!-- CHATBOT -->
-<link rel="stylesheet" href="css/chatbot.css">
+<link rel="stylesheet" href="/css/chatbot.css">
 
-<button class="minichat-botao" aria-label="Abrir chat">
+<button
+    class="minichat-botao"
+    aria-label="Abrir chat">
     💬
 </button>
 
@@ -337,7 +348,9 @@ require __DIR__ . '/php/includes/header.php';
     <div class="minichat-topo">
         <span>Fale com a gente</span>
 
-        <button class="minichat-fechar" aria-label="Fechar chat">
+        <button
+            class="minichat-fechar"
+            aria-label="Fechar chat">
             ✕
         </button>
     </div>
@@ -360,10 +373,11 @@ require __DIR__ . '/php/includes/header.php';
 
 </div>
 
-<script src="js/chatbot.js"></script>
-
+<script src="/js/chatbot.js"></script>
 
 <?php
+
 // Rodapé
-require __DIR__ . '/php/includes/footer.php';
+require __DIR__ . '/includes/footer.php';
+
 ?>
