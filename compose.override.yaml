@@ -1,0 +1,5 @@
+services:
+  app:
+    ports:
+      - "${APP_PORT:-8080}:80"
+
