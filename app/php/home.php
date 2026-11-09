@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 // Carregar inicialização da loja
 require_once __DIR__ . '/includes/bootstrap.php';
 
 // Sair da conta
-se (isset($_GET['logout'])) {
-    não definido(
+if (isset($_GET['logout'])) {
+    unset(
         $_SESSION['usuario_id'],
         $_SESSION['usuario_nome'],
         $_SESSION['usuario_admin'],
@@ -18,8 +16,8 @@ se (isset($_GET['logout'])) {
 
     session_regenerate_id(true);
 
-    cabeçalho('Localização: /php/login.php');
-    saída;
+    header('Location: /php/login.php');
+    exit;
 }
 
 // Verificar acesso
@@ -30,11 +28,11 @@ $categorias = categorias();
 
 $temHero = is_file(__DIR__ . '/../img/hero.png');
 
-nGatos=contagem(categorias);
+nCats=count(categorias);
 
-$h3dGatos = $nGatos
-    ? nGatos.(nCats === 1 ? 'categoria' : 'categorias') . 'de robôs'
-    : 'Robôs e consistem';
+$h3dCats = $nCats
+    ? nCats.(nCats === 1 ? ' categoria' : ' categorias') . ' de robôs'
+    : 'Robôs e componentes';
 
 $titulo = 'Início';
 
@@ -43,7 +41,7 @@ require __DIR__ . '/includes/header.php';
 
 ?>
 
-<principal>
+<main>
 
     <!-- HERO 3D -->
     <section class="h3d" id="hero3d" aria-label="Apresentação da loja">
@@ -75,21 +73,21 @@ require __DIR__ . '/includes/header.php';
 
                 <p class="h3d-desc">
                     Industriais, humanoides, sociais, agrícolas e colaborativos.
-                    Escolha uma categoria e monte seu projeto de robótica com a RoboParts.
+                    Escolha a categoria e monte o seu projeto de robótica com a RoboParts.
                 </p>
 
                 <div class="h3d-botoes">
 
                     <a class="h3d-btn h3d-btn-1" href="#catalogo">
-                        Ver
+                        Ver catálogo
 
                         <svg
                             viewBox="0 0 24 24"
-                            preencher="nenhum"
-                            traço="corAtual"
-                            largura-do-traço="2"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
                             stroke-linecap="round"
-                            junção-linha-de-traço="arredondado"
+                            stroke-linejoin="round"
                             aria-hidden="true">
                             <path d="M5 12h14M13 6l6 6-6 6"/>
                         </svg>
@@ -106,7 +104,7 @@ require __DIR__ . '/includes/header.php';
                 <div class="h3d-feats">
 
                     <div class="h3d-feat">
-                        <strong>Catálogo on-line</strong>
+                        <strong>Catálogo online</strong>
                         <span><?= e($h3dCats) ?></span>
                     </div>
 
@@ -127,7 +125,7 @@ require __DIR__ . '/includes/header.php';
     <script type="module" src="/js/hero3d.js"></script>
 
     <!-- CATEGORIAS -->
-    <seção class="secao" id="categorias">
+    <section class="secao" id="categorias">
 
         <div class="secao-in">
 
@@ -135,13 +133,13 @@ require __DIR__ . '/includes/header.php';
                 <h2>Categorias</h2>
             </div>
 
-            <div class="categorias-classe">
+            <div class="grade-categorias">
 
                 <?php foreach ($categorias as $i => $c): ?>
                     <?php img=imagemcategoria(c); ?>
 
                     <a
-                        classe="cat-card"
+                        class="cat-card"
                         href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
 
                         <?php if ($img): ?>
@@ -149,7 +147,7 @@ require __DIR__ . '/includes/header.php';
                             <img
                                 src="<?= e($img) ?>"
                                 alt=""
-                                carregando="preguiçoso">
+                                loading="lazy">
 
                         <?php else: ?>
 
@@ -161,14 +159,14 @@ require __DIR__ . '/includes/header.php';
 
                         <strong><?= e($c['nome']) ?></strong>
 
-                        <pequeno>
+                        <small>
                             <?php
                             n=contarprodutos(c['id']);
 
                             echo $n . (
                                 $n === 1
                                     ? ' produto'
-                                    : 'produtos'
+                                    : ' produtos'
                             );
                             ?>
                         </small>
@@ -236,7 +234,7 @@ require __DIR__ . '/includes/header.php';
                         <a
                             class="ver-todos"
                             href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
-                            Ver réu
+                            Ver categoria
                         </a>
 
                     </div>
@@ -306,7 +304,7 @@ require __DIR__ . '/includes/header.php';
 
             <div>
                 <h2>Precisa de ajuda para escolher?</h2>
-                <p>Fale com nossa equipe pelo WhatsApp ou por e-mail.</p>
+                <p>Fale com a nossa equipe pelo WhatsApp ou por e-mail.</p>
             </div>
 
             <div class="chamada-botoes">
@@ -334,7 +332,7 @@ require __DIR__ . '/includes/header.php';
 <!-- CHATBOT -->
 <link rel="stylesheet" href="/css/chatbot.css">
 
-<botão
+<button
     class="minichat-botao"
     aria-label="Abrir chat">
     💬
@@ -345,7 +343,7 @@ require __DIR__ . '/includes/header.php';
     <div class="minichat-topo">
         <span>Fale com a gente</span>
 
-        <botão
+        <button
             class="minichat-fechar"
             aria-label="Fechar chat">
             ✕
@@ -356,14 +354,14 @@ require __DIR__ . '/includes/header.php';
 
     <div class="minichat-form">
 
-        <entrada
-            tipo="texto"
-            classe="mensagem"
+        <input
+            type="text"
+            class="message"
             placeholder="Digite sua mensagem..."
             autocomplete="off">
 
         <button class="submit_message">
-            🐰
+            Enviar
         </button>
 
     </div>
