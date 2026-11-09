@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
 <?php
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
+=======
+define('NA_RAIZ', false);
+
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
 // Carregar inicialização da loja
 require_once __DIR__ . '/includes/bootstrap.php';
 
@@ -50,7 +59,14 @@ require __DIR__ . '/includes/header.php';
 
         <div class="h3d-cena">
             <div class="h3d-cena-pos">
+<<<<<<< HEAD
                 <canvas class="h3d-canvas" role="img" aria-label="Robô 3D interativo">
+=======
+                <canvas
+                    class="h3d-canvas"
+                    role="img"
+                    aria-label="Robô 3D interativo">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                 </canvas>
             </div>
         </div>
@@ -80,6 +96,7 @@ require __DIR__ . '/includes/header.php';
                     <a class="h3d-btn h3d-btn-1" href="#catalogo">
                         Ver catálogo
 
+<<<<<<< HEAD
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M5 12h14M13 6l6 6-6 6" />
@@ -87,6 +104,23 @@ require __DIR__ . '/includes/header.php';
                     </a>
 
                     <a class="h3d-btn h3d-btn-2" href="<?= e(pg('produtos.php')) ?>">
+=======
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+
+                    <a
+                        class="h3d-btn h3d-btn-2"
+                        href="<?= e(pg('produtos.php')) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                         Todos os produtos
                     </a>
 
@@ -129,11 +163,24 @@ require __DIR__ . '/includes/header.php';
                 <?php foreach ($categorias as $i => $c): ?>
                     <?php $img = imagem_categoria($c); ?>
 
+<<<<<<< HEAD
                     <a class="cat-card" href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
 
                         <?php if ($img): ?>
 
                             <img src="<?= e($img) ?>" alt="" loading="lazy">
+=======
+                    <a
+                        class="cat-card"
+                        href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+
+                        <?php if ($img): ?>
+
+                            <img
+                                src="<?= e($img) ?>"
+                                alt=""
+                                loading="lazy">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
 
                         <?php else: ?>
 
@@ -151,8 +198,13 @@ require __DIR__ . '/includes/header.php';
 
                             echo $n . (
                                 $n === 1
+<<<<<<< HEAD
                                 ? ' produto'
                                 : ' produtos'
+=======
+                                    ? ' produto'
+                                    : ' produtos'
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                             );
                             ?>
                         </small>
@@ -186,7 +238,13 @@ require __DIR__ . '/includes/header.php';
 
                 <h2>Catálogo</h2>
 
+<<<<<<< HEAD
                 <a class="ver-todos" href="<?= e(pg('produtos.php')) ?>">
+=======
+                <a
+                    class="ver-todos"
+                    href="<?= e(pg('produtos.php')) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                     Ver todos os produtos
                 </a>
 
@@ -203,7 +261,12 @@ require __DIR__ . '/includes/header.php';
                         <div>
 
                             <h3>
+<<<<<<< HEAD
                                 <a href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+=======
+                                <a
+                                    href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                                     <?= e($c['nome']) ?>
                                 </a>
                             </h3>
@@ -214,7 +277,13 @@ require __DIR__ . '/includes/header.php';
 
                         </div>
 
+<<<<<<< HEAD
                         <a class="ver-todos" href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+=======
+                        <a
+                            class="ver-todos"
+                            href="<?= e(pg('categoria.php')) ?>?c=<?= e($c['slug']) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                             Ver categoria
                         </a>
 
@@ -238,7 +307,13 @@ require __DIR__ . '/includes/header.php';
 
                             <?php if (admin()): ?>
 
+<<<<<<< HEAD
                                 <a class="btn btn-cheio" href="<?= e(pg('criar_produto.php')) ?>?c=<?= e($c['slug']) ?>">
+=======
+                                <a
+                                    class="btn btn-cheio"
+                                    href="<?= e(pg('criar_produto.php')) ?>?c=<?= e($c['slug']) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                                     + Novo produto
                                 </a>
 
@@ -260,7 +335,13 @@ require __DIR__ . '/includes/header.php';
 
                     <?php if (admin()): ?>
 
+<<<<<<< HEAD
                         <a class="btn btn-cheio" href="<?= e(pg('nova_categoria.php')) ?>">
+=======
+                        <a
+                            class="btn btn-cheio"
+                            href="<?= e(pg('nova_categoria.php')) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                             + Nova categoria
                         </a>
 
@@ -286,11 +367,23 @@ require __DIR__ . '/includes/header.php';
 
             <div class="chamada-botoes">
 
+<<<<<<< HEAD
                 <a class="btn btn-cheio" href="https://wa.me/<?= e(preg_replace('/\D/', '', LOJA_TELEFONE)) ?>">
                     WhatsApp
                 </a>
 
                 <a class="btn btn-escuro" href="mailto:<?= e(LOJA_EMAIL) ?>">
+=======
+                <a
+                    class="btn btn-cheio"
+                    href="https://wa.me/<?= e(preg_replace('/\D/', '', LOJA_TELEFONE)) ?>">
+                    WhatsApp
+                </a>
+
+                <a
+                    class="btn btn-escuro"
+                    href="mailto:<?= e(LOJA_EMAIL) ?>">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
                     E-mail
                 </a>
 
@@ -305,7 +398,13 @@ require __DIR__ . '/includes/header.php';
 <!-- CHATBOT -->
 <link rel="stylesheet" href="/css/chatbot.css">
 
+<<<<<<< HEAD
 <button class="minichat-botao" aria-label="Abrir chat">
+=======
+<button
+    class="minichat-botao"
+    aria-label="Abrir chat">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
     💬
 </button>
 
@@ -314,7 +413,13 @@ require __DIR__ . '/includes/header.php';
     <div class="minichat-topo">
         <span>Fale com a gente</span>
 
+<<<<<<< HEAD
         <button class="minichat-fechar" aria-label="Fechar chat">
+=======
+        <button
+            class="minichat-fechar"
+            aria-label="Fechar chat">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
             ✕
         </button>
     </div>
@@ -323,7 +428,15 @@ require __DIR__ . '/includes/header.php';
 
     <div class="minichat-form">
 
+<<<<<<< HEAD
         <input type="text" class="message" placeholder="Digite sua mensagem..." autocomplete="off">
+=======
+        <input
+            type="text"
+            class="message"
+            placeholder="Digite sua mensagem..."
+            autocomplete="off">
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
 
         <button class="submit_message">
             Enviar
@@ -340,4 +453,8 @@ require __DIR__ . '/includes/header.php';
 // Rodapé
 require __DIR__ . '/includes/footer.php';
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> d546d0e74b5e772a6d39373cf86f40116b7eae8f
