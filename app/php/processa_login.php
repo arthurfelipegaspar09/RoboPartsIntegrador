@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-<<<<<<< HEAD
+
 require_once __DIR__ . '/config.php';  // o init.php já inicia a sessão
-=======
+
 require_once __DIR__ . '/../init.php'; // o init.php já inicia a sessão
->>>>>>> origin/main
+
 
 function voltar_com_erro(array $erros, array $antigos = []): void
 {
@@ -47,8 +47,8 @@ try {
 } catch (PDOException $e) {
     error_log($e->getMessage());
     voltar_com_erro(['Erro ao fazer login. Tente novamente mais tarde.']);
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> origin/main
+
+
+
