@@ -1,10 +1,17 @@
 <?php
 
+<<<<<<< HEAD
 define('NA_RAIZ', true);
 
 require_once __DIR__ . '/php/includes/bootstrap.php';
 
 
+=======
+// Carregar inicialização da loja
+require_once __DIR__ . '/includes/bootstrap.php';
+
+// Sair da conta
+>>>>>>> origin/main
 if (isset($_GET['logout'])) {
     unset(
         $_SESSION['usuario_id'],
@@ -17,6 +24,7 @@ if (isset($_GET['logout'])) {
 
     session_regenerate_id(true);
 
+<<<<<<< HEAD
     header('Location: php/login.php');
     exit;
 }
@@ -31,12 +39,34 @@ $nCats = count($categorias);
 
 $h3dCats = $nCats
     ? $nCats . ($nCats === 1 ? ' categoria' : ' categorias') . ' de robôs'
+=======
+    header('Location: /php/login.php');
+    exit;
+}
+
+// Verificar acesso
+exigir_acesso();
+
+// Dados da página
+$categorias = categorias();
+
+$temHero = is_file(__DIR__ . '/../img/hero.png');
+
+nCats=count(categorias);
+
+$h3dCats = $nCats
+    ? nCats.(nCats === 1 ? ' categoria' : ' categorias') . ' de robôs'
+>>>>>>> origin/main
     : 'Robôs e componentes';
 
 $titulo = 'Início';
 
 // Cabeçalho
+<<<<<<< HEAD
 require __DIR__ . '/php/includes/header.php';
+=======
+require __DIR__ . '/includes/header.php';
+>>>>>>> origin/main
 
 ?>
 
@@ -135,7 +165,11 @@ require __DIR__ . '/php/includes/header.php';
             <div class="grade-categorias">
 
                 <?php foreach ($categorias as $i => $c): ?>
+<<<<<<< HEAD
                     <?php $img = imagem_categoria($c); ?>
+=======
+                    <?php img=imagemcategoria(c); ?>
+>>>>>>> origin/main
 
                     <a
                         class="cat-card"
@@ -160,7 +194,11 @@ require __DIR__ . '/php/includes/header.php';
 
                         <small>
                             <?php
+<<<<<<< HEAD
                             $n = contar_produtos($c['id']);
+=======
+                            n=contarprodutos(c['id']);
+>>>>>>> origin/main
 
                             echo $n . (
                                 $n === 1
@@ -329,7 +367,11 @@ require __DIR__ . '/php/includes/header.php';
 </main>
 
 <!-- CHATBOT -->
+<<<<<<< HEAD
 <link rel="stylesheet" href="./css/chatbot.css">
+=======
+<link rel="stylesheet" href="/css/chatbot.css">
+>>>>>>> origin/main
 
 <button
     class="minichat-botao"
@@ -367,11 +409,19 @@ require __DIR__ . '/php/includes/header.php';
 
 </div>
 
+<<<<<<< HEAD
 <script src="./js/chatbot.js"></script>
+=======
+<script src="/js/chatbot.js"></script>
+>>>>>>> origin/main
 
 <?php
 
 // Rodapé
+<<<<<<< HEAD
 require __DIR__ . '/php/includes/footer.php';
+=======
+require __DIR__ . '/includes/footer.php';
+>>>>>>> origin/main
 
 ?>

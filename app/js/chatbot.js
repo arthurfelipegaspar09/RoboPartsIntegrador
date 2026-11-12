@@ -69,6 +69,7 @@ function casaPalavras(texto, palavras) {
 }
 
 
+<<<<<<< HEAD
 function normalizar(texto) {
     return texto
         .toLowerCase()
@@ -750,6 +751,35 @@ const scripts = [
 
 
 const fallback = 'Desculpe, não consegui ajudar com isso! Pode reformular a pergunta? Se não, o jeito mais rápido de falar com a gente é pelo telefone: ' + telefone;
+=======
+
+const scripts = [
+    {
+        palavras: ['preco', 'precos', 'custo', 'custa', 'orcamento', 'cotacao', 'valor', 'quanto'],
+        reply: 'Os valores aparecem em cada produto do catálogo. Para projetos sob medida ou compras em quantidade, fale com a nossa equipe pelo WhatsApp ou por e-mail.'
+    },
+    {
+        palavras: ['produto', 'produtos', 'catalogo', 'robo', 'robos', 'categoria', 'categorias',
+                   'industrial', 'industriais', 'humanoide', 'humanoides', 'social', 'sociais',
+                   'agricola', 'agricolas', 'colaborativo', 'colaborativos'],
+        reply: 'Trabalhamos com robôs industriais, humanoides, sociais, agrícolas e colaborativos. Veja a seção "Categorias" aqui na página ou o catálogo completo.'
+    },
+    {
+        palavras: ['entrega', 'frete', 'prazo', 'envio', 'enviar'],
+        reply: 'Prazo e frete variam conforme o produto e o destino. Fale com a nossa equipe para confirmar.'
+    },
+    {
+        palavras: ['whatsapp', 'zap', 'telefone', 'ligar', 'contato', 'atendente', 'ajuda', 'falar', 'email'],
+        reply: 'Você pode falar com a nossa equipe pelo WhatsApp ou por e-mail. Os botões estão no final da página, em "Precisa de ajuda para escolher?".'
+    },
+    {
+        regex: /^(o+i+|ola+|opa|e ai|bom dia|boa tarde|boa noite)\b/,
+        reply: 'Olá! Pergunte sobre produtos, categorias, preços ou entrega.'
+    }
+];
+
+const fallback = 'Desculpe, não consegui ajudar com isso! O jeito mais rápido de falar com a gente é pelo telefone: ' + telefone;
+>>>>>>> origin/main
 
 function responder(texto) {
     const t = normalizar(texto);

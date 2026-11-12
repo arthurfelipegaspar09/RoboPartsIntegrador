@@ -74,4 +74,8 @@ function atualizarLocalizacao(int $id, bool $permitir): bool
     }
     unset($u);
     return salvarUsuarios($usuarios);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
