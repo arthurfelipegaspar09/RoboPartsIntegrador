@@ -1,0 +1,53 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/config.php'; 
+
+function voltar_com_erro(array $erros, array $antigos = []): void
+{
+    $_SESSION['erros']   = $erros;
+    $_SESSION['antigos'] = $antigos;
+    header('Location: cadastro.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: cadastro.php');
+    exit;
+}
+
+$nome  = trim($_POST['nome'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$senha = $_POST['senha'] ?? '';
+
+$antigos = ['nome' => $nome, 'email' => $email];
+
+
+$erros = [];
+if (mb_strlen($nome) < 2 || mb_strlen($nome) > 100) {
+    $erros[] = 'Informe seu nome (2 a 100 caracteres).';
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 150) {
+    $erros[] = 'Informe um e-mail válido.';
+}
+if (mb_strlen($senha) < 6) {
+    $erros[] = 'A senha deve ter pelo menos 6 caracteres.';
+}
+if ($erros) {
+    voltar_com_erro($erros, $antigos);
+}
+
+// Grava no banco (tabela usuarios)
+try {
+    if (!criarUsuario($nome, $email, $senha)) {
+        voltar_com_erro(['Este e-mail já está cadastrado.'], $antigos);
+    }
+} catch (Throwable $e) {
+    // Mostra o motivo real (conexão, tabela inexistente, etc.) em vez de falhar em silêncio
+    voltar_com_erro(['Não foi possível salvar no banco: ' . $e->getMessage()], $antigos);
+}
+
+
+
+header('Location: login.php');
+exit;

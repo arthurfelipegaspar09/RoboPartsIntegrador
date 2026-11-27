@@ -1,0 +1,250 @@
+/* Botão flutuante: o robô acenando (a imagem já tem fundo branco) */
+.minichat-botao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 9999;
+}
+
+.minichat-botao:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+}
+
+.minichat-botao:focus-visible {
+    outline: 3px solid #90e0ef;
+    outline-offset: 3px;
+}
+
+.minichat-botao img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    object-fit: contain;
+    object-position: 50% 50%;
+    /* o corpo do robô fica à esquerda do braço que acena; este ajuste centraliza o conjunto */
+    transform: translate(5.5%, -1.4%) scale(0.92);
+    pointer-events: none;
+}
+
+/* ---------- Janela do chat ----------
+   Cores pelas variáveis --mc-*: claro por padrão, escuro quando o site está no tema escuro. */
+.minichat {
+    --mc-painel: #ffffff;
+    --mc-borda: #d5e3ee;
+    --mc-fundo-msgs: #eef5fa;
+    --mc-balao-bot: #ffffff;
+    --mc-balao-bot-texto: #14202e;
+    --mc-balao-bot-borda: #dbe7f0;
+    --mc-balao-user: linear-gradient(135deg, #2f80b0, #1f6f9f);
+    --mc-balao-user-texto: #ffffff;
+    --mc-campo: #ffffff;
+    --mc-campo-borda: #bfd0de;
+    --mc-campo-texto: #14202e;
+    --mc-campo-placeholder: #7b8a99;
+    --mc-pontos: #8fa3b5;
+    --mc-sombra: 0 14px 40px rgba(10, 30, 55, 0.28);
+}
+
+:root[data-tema="escuro"] .minichat {
+    --mc-painel: #121826;
+    --mc-borda: #26324a;
+    --mc-fundo-msgs: #0b101b;
+    --mc-balao-bot: #1b2438;
+    --mc-balao-bot-texto: #e8eef6;
+    --mc-balao-bot-borda: #2a3753;
+    --mc-campo: #0b101b;
+    --mc-campo-borda: #33415f;
+    --mc-campo-texto: #e8eef6;
+    --mc-campo-placeholder: #8593a8;
+    --mc-pontos: #7e90a8;
+    --mc-sombra: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+.minichat {
+    position: fixed;
+    bottom: 104px;
+    right: 20px;
+    width: 340px;
+    height: 440px;
+    max-height: calc(100vh - 124px);
+    background: var(--mc-painel);
+    border: 1px solid var(--mc-borda);
+    border-radius: 16px;
+    box-shadow: var(--mc-sombra);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.minichat.aberto {
+    display: flex;
+    animation: minichat-entrar 0.22s ease both;
+}
+
+@keyframes minichat-entrar {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.minichat-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #0b1a33, #16335c);
+    border-bottom: 2px solid #90e0ef;
+    color: #fff;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.minichat-fechar {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #cfe9f3;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.minichat-fechar:hover {
+    background: rgba(144, 224, 239, 0.16);
+    color: #fff;
+}
+
+/* Área das mensagens */
+.minichat .chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    background: var(--mc-fundo-msgs);
+}
+
+.minichat .bubble {
+    max-width: 82%;
+    padding: 9px 13px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.45;
+    word-wrap: break-word;
+}
+
+.minichat .bubble.user {
+    align-self: flex-end;
+    background: var(--mc-balao-user);
+    color: var(--mc-balao-user-texto);
+    border-bottom-right-radius: 4px;
+}
+
+.minichat .bubble.assistant {
+    align-self: flex-start;
+    background: var(--mc-balao-bot);
+    color: var(--mc-balao-bot-texto);
+    border: 1px solid var(--mc-balao-bot-borda);
+    border-bottom-left-radius: 4px;
+}
+
+/* Indicador "digitando..." (três bolinhas) */
+.minichat .bubble span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 2px;
+    border-radius: 50%;
+    background: var(--mc-pontos);
+    animation: minichat-pular 1s infinite;
+}
+
+.minichat .bubble span:nth-child(2) { animation-delay: 0.15s; }
+.minichat .bubble span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes minichat-pular {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+}
+
+/* Campo de digitar */
+.minichat-form {
+    display: flex;
+    gap: 8px;
+    padding: 11px;
+    border-top: 1px solid var(--mc-borda);
+    background: var(--mc-painel);
+}
+
+.minichat .minichat-form input.message {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 12px;
+    border: 1px solid var(--mc-campo-borda);
+    border-radius: 10px;
+    background: var(--mc-campo);
+    color: var(--mc-campo-texto);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.minichat .minichat-form input.message::placeholder {
+    color: var(--mc-campo-placeholder);
+}
+
+.minichat .minichat-form input.message:focus {
+    border-color: #5fa8d3;
+    box-shadow: 0 0 0 3px rgba(95, 168, 211, 0.28);
+}
+
+.minichat .minichat-form .submit_message {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2f80b0, #1f6f9f);
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.minichat .minichat-form .submit_message:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+/* Celular: o chat ocupa quase a tela toda */
+@media (max-width: 480px) {
+    .minichat {
+        right: 10px;
+        left: 10px;
+        width: auto;
+        bottom: 99px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .minichat.aberto,
+    .minichat .bubble span { animation: none; }
+}

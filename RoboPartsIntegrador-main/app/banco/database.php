@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+function database(): PDO
+{
+    static $connection = null;
+
+    // Reutiliza a conexão caso ela já exista
+    if ($connection instanceof PDO) {
+        return $connection;
+    }
+
+    // Configurações do banco de dados
+    $host = getenv('DB_HOST') ?: 'db';
+    $port = getenv('DB_PORT') ?: '3306';
+    $database = getenv('DB_DATABASE') ?: 'cadastro';
+    $username = getenv('DB_USERNAME') ?: 'root';
+    $password = getenv('DB_PASSWORD') ?: 'senai123';
+
+    // Monta a conexão
+    $dsn = "mysql:host={$host};port={$port};dbname={$database};charset=utf8mb4";
+
+    // Cria a conexão com o MySQL
+    $connection = new PDO(
+        $dsn,
+        $username,
+        $password,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]
+    );
+
+    return $connection;
+}
