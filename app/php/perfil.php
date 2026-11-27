@@ -70,6 +70,18 @@ require __DIR__ . '/includes/header.php';
         <a class="btn" href="../index.php?logout">Sair da conta</a>
     </p>
 
+    <details>
+        <summary class="btn">Editar conta</summary>
+        <form method="post" action="editarconta.php">
+            <?= csrf_campo() ?>
+            <input type="text" name="nome" value="<?= e($nome) ?>" placeholder="Nome" required minlength="2" maxlength="100">
+            <input type="password" name="nova_senha" placeholder="Nova senha (deixe vazio para manter)" minlength="6" autocomplete="new-password">
+            <input type="password" name="confirmar_senha" placeholder="Confirmar nova senha" autocomplete="new-password">
+            <input type="password" name="senha_atual" placeholder="Senha atual (obrigatória)" required autocomplete="current-password">
+            <button class="btn btn-cheio" type="submit">Salvar alterações</button>
+        </form>
+    </details>
+
     <form method="post" action="excluirconta.php"
           onsubmit="return confirm('Tem certeza? Essa ação não pode ser desfeita.');">
         <?= csrf_campo() ?>
