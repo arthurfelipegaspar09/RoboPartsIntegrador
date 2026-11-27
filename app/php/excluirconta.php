@@ -52,5 +52,5 @@ try {
 $_SESSION = [];
 session_destroy();
 
-header('Location: ../index.php?conta=excluida');
+header('Location: ../index.php?logout');
 exit;
