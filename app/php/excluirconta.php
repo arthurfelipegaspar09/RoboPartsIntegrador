@@ -1,10 +1,9 @@
 <?php
 
-require_once __DIR__ . '/PASTA_DO_PERFIL/includes/bootstrap.php'; 
+require_once __DIR__ . '/includes/bootstrap.php';
 exigir_login();
 
-$perfil = 'PASTA_DO_PERFIL/perfil.php'; 
-
+$perfil = 'perfil.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ' . $perfil);
@@ -53,5 +52,5 @@ try {
 $_SESSION = [];
 session_destroy();
 
-header('Location: index.php?conta=excluida');
+header('Location: ../index.php?conta=excluida');
 exit;
