@@ -41,8 +41,15 @@ if ($usuario['admin']) {
 try {
     $stmt = $pdo->prepare('DELETE FROM usuarios WHERE id = ?');
     $stmt->execute([$id]);
+    $apagou = $stmt->rowCount() === 1;
 } catch (PDOException $e) {
     error_log('Erro ao excluir usuário: ' . $e->getMessage());
+    flash('aviso', 'Não foi possível excluir a conta. Tente novamente.');
+    header('Location: ' . $perfil);
+    exit;
+}
+
+if (!$apagou) {
     flash('aviso', 'Não foi possível excluir a conta. Tente novamente.');
     header('Location: ' . $perfil);
     exit;
@@ -52,5 +59,5 @@ try {
 $_SESSION = [];
 session_destroy();
 
-header('Location: ../index.php?logout');
+header('Location: ../index.php');
 exit;

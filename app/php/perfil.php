@@ -70,14 +70,13 @@ require __DIR__ . '/includes/header.php';
         <a class="btn" href="../index.php?logout">Sair da conta</a>
     </p>
 
-    <form method="post" action="../excluirconta.php"
+    <form method="post" action="excluirconta.php"
           onsubmit="return confirm('Tem certeza? Essa ação não pode ser desfeita.');">
         <?= csrf_campo() ?>
         <input type="password" name="senha" placeholder="Confirme sua senha" required>
         <button class="btn" type="submit">EXCLUIR CONTA</button>
     </form>
     
-</main>
 </main>
 
 <?php require __DIR__ . '/includes/footer.php';
